@@ -30,11 +30,11 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+                stage('Deploy') {
             steps {
                 sh '''
                   docker rm -f envapp || true
-                  docker run -d --name envapp --restart unless-stopped -p 5000:5000 \
+                  docker run -d --name envapp --restart unless-stopped -p 5050:5000 \
                     -e APP_ENV -e APP_MESSAGE -e API_KEY -e BUILD_NUMBER \
                     envapp:${BUILD_NUMBER}
                 '''
